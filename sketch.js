@@ -87,7 +87,7 @@ const Bodies = Matter.Bodies;
 
 
  
-var particles = [];
+var p=[];
 var plinkos = [];
 var divisions =[];
 var divisionHeight=300;
@@ -157,14 +157,14 @@ function draw() {
   }
  
    //creation particle objects
- if(World.frameCount % 60 === 0){
-  particles.push(new Particles(random(370,430),10,10));
-score++
+ if(frameCount % 60 === 0){
+  p.push(new Particle(random(370,430),10,10));
+// score++
 }
 
   //displaying the particles 
-  for (var a = 0; a< particles.length;a++){
-    particles[a].display();
+  for (var a = 0; a = p.length;a= a+1){
+    p[a].display();
   }
   
 }
