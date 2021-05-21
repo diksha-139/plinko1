@@ -54,7 +54,7 @@
 // function draw() {
 //   background("black");
 //   textSize(20)
-//  //text("Score : "+score,20,30);
+//  text("Score : "+score,20,30);
 //   Engine.update(engine);
 //   ground.display();
   
@@ -63,10 +63,7 @@
 //      plinkos[i].display();
      
 //    }
-//    if(frameCount%60===0){
-//      particles.push(new Particle(random(width/2-30, width/2+30), 10,10));
-//      score++;
-//    }
+//   parti()
  
 //   for (var j = 0; j < particles.length; j++) {
    
@@ -76,6 +73,12 @@
      
 //      divisions[k].display();
 //    }
+// }
+// function parti(){
+//   if(frameCount%60===0){
+//     particles.push(new Particle(random(width/2-30, width/2+30), 10,10));
+//     score=score +1;
+//   }
 // }
 const World = Matter.World;
 const Engine = Matter.Engine;
@@ -89,6 +92,8 @@ var plinkos = [];
 var divisions =[];
 var divisionHeight=300;
 var score =0;
+
+
 
 function setup() {
 
@@ -127,8 +132,7 @@ function setup() {
   }
 
 
-  //creation particle objects
-  
+ 
     
 }
  
@@ -151,8 +155,12 @@ function draw() {
   for (var k = 0; k < divisions.length; k++) {
     divisions[k].display();
   }
-
-  
+ 
+   //creation particle objects
+ if(World.frameCount % 60 === 0){
+  particles.push(new Particles(random(370,430),10,10));
+score++
+}
 
   //displaying the particles 
   for (var a = 0; a< particles.length;a++){
@@ -160,7 +168,4 @@ function draw() {
   }
   
 }
-if(World.frameCount % 60 === 0){
-  particles.push(new Particles(random(width/2 - 10,width/2 + 10),10,10));
-score++
-}
+
