@@ -77,11 +77,12 @@
 //      divisions[k].display();
 //    }
 // }
-
-const Engine = Matter.Engine;
 const World = Matter.World;
-const Events = Matter.Events,
+const Engine = Matter.Engine;
 const Bodies = Matter.Bodies;
+
+
+
  
 var particles = [];
 var plinkos = [];
@@ -94,6 +95,8 @@ function setup() {
   createCanvas(800, 800);
   engine = Engine.create();
   world = engine.world;
+
+  
   ground = new Ground(width/2,height,width,20);
 
   //division objects
@@ -126,7 +129,8 @@ function setup() {
 
   //creation particle objects
   if(frameCount%60===0){
-    particles.push(new Particles(random(width/2-10,width/2+10),10,10));
+    particles.push(new Particles(random(width/2-10,width/2+10),10,random(5,20)));
+  score++
   }
     
 }
@@ -136,6 +140,7 @@ function setup() {
 function draw() {
   background("black");
   textSize(20)
+  text("Score: "+score, width-100,50)
  
   Engine.update(engine);
   ground.display();
